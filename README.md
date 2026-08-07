@@ -1,8 +1,8 @@
 # pg-dancepad
 
-瀏覽器**節奏踏墊**：四軌箭頭下落、Perfect／Good／Miss 判定、連擊與體力條。純前端；**mobile-first**。
+瀏覽器**節奏踏墊**：四軌箭頭下落、Perfect／Good／Miss 判定、連擊與體力條；開局後播放依 BPM 合成的背景音樂。純前端；**mobile-first**。
 
-致敬跳舞機／節奏踏墊類型，原創節拍譜與 Web Audio 音效，非商業曲庫或譜面復刻。
+致敬跳舞機／節奏踏墊類型，原創節拍譜與 Web Audio 合成 BGM／音效，非商業曲庫或譜面復刻。
 
 也可當作 [Playgrounds（遊樂場）](https://play.samkuo.me/) 的 **SAM**（`index.html` 入口）。
 

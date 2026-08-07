@@ -154,6 +154,8 @@ btnStart.addEventListener("click", async () => {
   await audio.unlock();
   audio.click();
   game.start(best);
+  const c = game.chart();
+  audio.startBgm(c.bpm, c.id, game.songEnd);
   setStatus(game.message);
   syncHud();
 });
@@ -164,6 +166,10 @@ btnMute.addEventListener("click", async () => {
   btnMute.setAttribute("aria-pressed", on ? "true" : "false");
   btnMute.textContent = on ? "音效" : "靜音";
   audio.setEnabled(on);
+  if (on && game.status === "playing") {
+    const c = game.chart();
+    audio.startBgm(c.bpm, c.id, Math.max(0.5, game.songEnd - game.time));
+  }
   audio.click();
 });
 
