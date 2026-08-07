@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="節奏踏墊：四軌箭頭下落、判定連擊。純前端 Playgrounds SAM，適配手機觸控。"
+    />
+    <title>節奏踏墊</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambiance" aria-hidden="true"></div>
+    <main>
+      <header class="hero">
+        <p class="eyebrow">街機</p>
+        <h1>節奏踏墊</h1>
+        <p class="tagline">四軌下落 · 踩拍判定 · 連擊計分</p>
+      </header>
+
+      <section class="meter" aria-label="對局狀態">
+        <div class="meter-item"><span class="label">分數</span><strong id="score">0</strong></div>
+        <div class="meter-item"><span class="label">連擊</span><strong id="combo">0</strong></div>
+        <div class="meter-item"><span class="label">體力</span><strong id="life">100</strong></div>
+        <div class="meter-item"><span class="label">最佳</span><strong id="best">0</strong></div>
+      </section>
+
+      <div id="chart-row" class="chip-row" role="group" aria-label="選曲"></div>
+
+      <div class="controls">
+        <button type="button" id="btn-start">開局</button>
+        <button type="button" id="btn-mute" class="secondary" aria-pressed="true">音效</button>
+      </div>
+
+      <p id="status" class="status" role="status">選曲後開局</p>
+      <p id="stats" class="stats" aria-live="polite">P 0 · G 0 · M 0</p>
+
+      <div class="stage">
+        <canvas id="game" width="360" height="560" aria-label="節奏軌道"></canvas>
+      </div>
+
+      <div id="pad" class="pad" aria-label="虛擬踏墊"></div>
+
+      <details class="rules">
+        <summary>怎麼玩</summary>
+        <ul>
+          <li>箭頭落至判定線時按對應方向（螢幕踏墊或鍵盤方向鍵）。</li>
+          <li>Perfect／Good 加分與連擊；Miss 扣體力，體力歸零失敗。</li>
+          <li>曲目與音效為原創節拍小品，致敬跳舞機類型，非商業譜面／曲庫復刻。</li>
+        </ul>
+      </details>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

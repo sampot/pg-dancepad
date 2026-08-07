@@ -1,0 +1,239 @@
+:root {
+  color-scheme: light dark;
+  --bg: #eceff6;
+  --panel: #ffffff;
+  --text: #101625;
+  --muted: #64708a;
+  --line: #cfd6e6;
+  --accent: #2563eb;
+  --on-accent: #f8fafc;
+  --ok: #15803d;
+  --bad: #dc2626;
+  --warn: #b45309;
+  --tap: 52px;
+  --radius: 0.85rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #070a12;
+    --panel: #121826;
+    --text: #e8eef7;
+    --muted: #94a3b8;
+    --line: #243044;
+    --accent: #60a5fa;
+    --on-accent: #0b1220;
+    --ok: #4ade80;
+    --bad: #f87171;
+    --warn: #fbbf24;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.ambiance {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(720px 400px at 90% -10%, color-mix(in oklab, var(--accent) 20%, transparent), transparent 55%),
+    radial-gradient(520px 320px at 0% 100%, color-mix(in oklab, #ec4899 12%, transparent), transparent 50%),
+    var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: "Avenir Next", "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+main {
+  width: min(100%, 26rem);
+  margin: 0 auto;
+  padding: 0.75rem 0.65rem max(1rem, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.hero {
+  text-align: center;
+}
+.eyebrow {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+  font-weight: 700;
+}
+.hero h1 {
+  margin: 0.1rem 0 0;
+  font-size: clamp(1.6rem, 5vw, 2rem);
+  letter-spacing: 0.12em;
+}
+.tagline {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.meter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.meter-item {
+  flex: 1 1 4rem;
+  min-height: 46px;
+  padding: 0.3rem 0.4rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--panel) 92%, transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.meter-item .label {
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+.meter-item strong {
+  font-variant-numeric: tabular-nums;
+  font-size: 1.05rem;
+}
+
+.chip-row,
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip,
+button {
+  min-height: var(--tap);
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.4rem 0.75rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.chip {
+  flex: 1 1 auto;
+  background: color-mix(in oklab, var(--text) 5%, var(--panel));
+  border-color: var(--line);
+  color: var(--text);
+  font-size: 0.85rem;
+}
+.chip.is-active {
+  background: color-mix(in oklab, var(--accent) 16%, var(--panel));
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--line));
+  color: var(--accent);
+}
+
+.controls button {
+  flex: 1 1 auto;
+}
+button:not(.chip):not(.secondary):not(.pad-btn) {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+button.secondary {
+  background: color-mix(in oklab, var(--text) 5%, var(--panel));
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.status {
+  margin: 0;
+  text-align: center;
+  min-height: 1.2em;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.status[data-tone="ok"] {
+  color: var(--ok);
+}
+.status[data-tone="bad"] {
+  color: var(--bad);
+}
+.stats {
+  margin: 0;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.stage {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  background: #0a0e18;
+  display: flex;
+  justify-content: center;
+}
+#game {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  touch-action: none;
+}
+
+.pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+  max-width: 18rem;
+  width: 100%;
+  margin: 0.15rem auto 0;
+}
+.pad-btn {
+  min-height: 64px;
+  font-size: 1.45rem;
+  background: color-mix(in oklab, var(--accent) 10%, var(--panel));
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+.pad-btn.is-flash {
+  background: color-mix(in oklab, var(--accent) 35%, var(--panel));
+  border-color: var(--accent);
+}
+.pad-btn:active {
+  transform: scale(0.97);
+}
+
+.rules {
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--panel) 90%, transparent);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.rules summary {
+  min-height: var(--tap);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  main {
+    width: min(100%, 32rem);
+  }
+  .pad-btn {
+    min-height: 72px;
+  }
+}
