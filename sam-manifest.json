@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "rev": "e057446",
+  "files": [
+    "app.js",
+    "audio.js",
+    "functions.js",
+    "game.js",
+    "index.html",
+    "styles.css"
+  ]
+}
